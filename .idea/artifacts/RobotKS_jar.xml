@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="RobotKS:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/RobotKS_jar</output-path>
+    <root id="archive" name="RobotKS.jar">
+      <element id="module-output" name="RobotKS" />
+    </root>
+  </artifact>
+</component>
