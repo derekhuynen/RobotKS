@@ -1,6 +1,7 @@
 package RobotKS;
 
 import java.awt.Robot;
+import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
@@ -10,15 +11,22 @@ import java.util.Date;
 public class LoginProgram {
 
     private Robot robot;
-    private SimpleDateFormat formatter= new SimpleDateFormat("hh:mm:ss aa");
+    private Point point;
+    private SimpleDateFormat formatter = new SimpleDateFormat("hh:mm:ss aa");
 
-    public LoginProgram(Robot robot) {
+    public LoginProgram(Robot robot, Point point) {
         this.robot = robot;
+        this.point = point;
     }
 
     public void run() {
-        System.out.println("Place Mouse on Play Button. Waiting 20 seconds");
-        this.robot.delay(20000);
+
+
+        System.out.println("Moving Mouse to PLay Button");
+        this.robot.delay(10000);
+        this.robot.mouseMove((int) this.point.getX(),(int) this.point.getY());
+
+        this.robot.delay(2000);
 
         //Press enter to login
         System.out.println("Clicking the Play Button.");
@@ -34,11 +42,11 @@ public class LoginProgram {
 
         while (imageStuff.compareImage(true) > 90) {
             System.out.println("You are currently in Queue");
-            longerDelay(2);
+            longerDelay(5);
         }
 
         System.out.println("You are in Character Screen");
-        longerDelay(2);
+        longerDelay(5);
 
 
         //Press enter to login
@@ -52,7 +60,7 @@ public class LoginProgram {
 
         //OPTION run anti afk
         System.out.println("\nStarting AntiAFK");
-        looper(new AntiAFK(robot, 20000, 40000, 1),5);
+        looper(new AntiAFK(robot, 40000, 60000, 5),5);
 
         //Press Alt+F4
         System.out.println("Pressing Alt+F4 to exit Game");
